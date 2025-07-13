@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { LogIn, User, Lock, Eye, EyeOff, Package } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const demoUsers = [
   {
@@ -206,13 +206,13 @@ const Login: React.FC = () => {
                   <h4 className="font-bold text-green-900">Need to Track a Product?</h4>
                 </div>
                 <p className="text-sm text-green-700 mb-4">Consumers, regulators, and auditors can track products without logging in.</p>
-                <a
-                  href="/external"
+                <Link
+                  to="/external"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-xl font-medium transition-colors duration-200"
                 >
                   <Package className="w-4 h-4" />
                   Track Product
-                </a>
+                </Link>
               </div>
             </div>
           </div>
