@@ -3,10 +3,12 @@ import { Package, TrendingUp, AlertTriangle, CheckCircle, Plus, Upload, MapPin, 
 import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/Navbar';
 import { mockProducts } from '../data/mockData';
+import { useToast } from '../components/Navbar';
 
 const UpstreamDashboard: React.FC = () => {
   const { user } = useAuth();
   const [selectedBatch, setSelectedBatch] = useState<string | null>(null);
+  const toast = useToast();
 
   // Mock data for upstream participants
   const myBatches = mockProducts.filter(p => p.productType === 'milk' || p.productType === 'strawberries');
@@ -78,17 +80,17 @@ const UpstreamDashboard: React.FC = () => {
             <div className="bg-white rounded-3xl shadow-lg border border-gray-200 p-6 mb-8">
               <h2 className="text-xl font-bold text-gray-900 mb-6">Quick Actions</h2>
               <div className="space-y-4">
-                <button className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 border border-green-200 rounded-2xl transition-all duration-200 group">
+                <button onClick={() => toast('Batch delivery confirmed! (demo)')} className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 border border-green-200 rounded-2xl transition-all duration-200 group">
                   <Plus className="w-5 h-5 text-green-600 group-hover:scale-110 transition-transform duration-200" />
-                  <span className="font-semibold text-green-700">Create New Batch</span>
+                  <span className="font-semibold text-green-700">Confirm Handoff</span>
                 </button>
-                <button className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 border border-blue-200 rounded-2xl transition-all duration-200 group">
+                <button onClick={() => toast('Batch metadata uploaded! (demo)')} className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 border border-blue-200 rounded-2xl transition-all duration-200 group">
                   <Upload className="w-5 h-5 text-blue-600 group-hover:scale-110 transition-transform duration-200" />
                   <span className="font-semibold text-blue-700">Upload Metadata</span>
                 </button>
-                <button className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 border border-purple-200 rounded-2xl transition-all duration-200 group">
+                <button onClick={() => toast('Quality assurance update triggered! (demo)')} className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 border border-purple-200 rounded-2xl transition-all duration-200 group">
                   <CheckCircle className="w-5 h-5 text-purple-600 group-hover:scale-110 transition-transform duration-200" />
-                  <span className="font-semibold text-purple-700">Confirm Handoff</span>
+                  <span className="font-semibold text-purple-700">Trigger QA Update</span>
                 </button>
               </div>
             </div>
@@ -180,11 +182,11 @@ const UpstreamDashboard: React.FC = () => {
                       {isSelected && (
                         <div className="mt-4 pt-4 border-t border-green-200">
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <button className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-xl font-medium transition-colors duration-200">
-                              Update Metadata
+                            <button onClick={() => toast('Handoff flagged as issue! (demo)')} className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl font-medium transition-colors duration-200">
+                              Flag Handoff Issue
                             </button>
-                            <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-colors duration-200">
-                              View Journey
+                            <button onClick={() => toast('Validation/tamper check complete! (demo)')} className="px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white rounded-xl font-medium transition-colors duration-200">
+                              Validate/Tamper Check
                             </button>
                             <button className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-medium transition-colors duration-200">
                               Confirm Handoff

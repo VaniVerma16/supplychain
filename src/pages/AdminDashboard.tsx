@@ -3,10 +3,12 @@ import { Users, Settings, BarChart3, Shield, AlertTriangle, CheckCircle, Downloa
 import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/Navbar';
 import { mockProducts } from '../data/mockData';
+import { useToast } from '../components/Navbar';
 
 const AdminDashboard: React.FC = () => {
   const { user } = useAuth();
   const [selectedTab, setSelectedTab] = useState('overview');
+  const toast = useToast();
 
   // Mock admin data
   const systemStats = [
@@ -170,15 +172,15 @@ const AdminDashboard: React.FC = () => {
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">Quick Actions</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <button className="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 border border-purple-200 rounded-2xl transition-all duration-200 group">
+                    <button onClick={() => toast('Compliance report exported! (demo)')} className="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 border border-purple-200 rounded-2xl transition-all duration-200 group">
                       <Download className="w-5 h-5 text-purple-600 group-hover:scale-110 transition-transform duration-200" />
                       <span className="font-semibold text-purple-700">Export Reports</span>
                     </button>
-                    <button className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 border border-blue-200 rounded-2xl transition-all duration-200 group">
+                    <button onClick={() => toast('Smart alerts configured! (demo)')} className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 border border-blue-200 rounded-2xl transition-all duration-200 group">
                       <Settings className="w-5 h-5 text-blue-600 group-hover:scale-110 transition-transform duration-200" />
                       <span className="font-semibold text-blue-700">Configure Alerts</span>
                     </button>
-                    <button className="flex items-center gap-3 p-4 bg-gradient-to-r from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 border border-green-200 rounded-2xl transition-all duration-200 group">
+                    <button onClick={() => toast('All data viewed! (demo)')} className="flex items-center gap-3 p-4 bg-gradient-to-r from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 border border-green-200 rounded-2xl transition-all duration-200 group">
                       <Eye className="w-5 h-5 text-green-600 group-hover:scale-110 transition-transform duration-200" />
                       <span className="font-semibold text-green-700">View All Data</span>
                     </button>
@@ -212,7 +214,7 @@ const AdminDashboard: React.FC = () => {
                           {user.status}
                         </div>
                         <span className="text-sm text-gray-500">{user.lastLogin}</span>
-                        <button className="px-3 py-1 bg-purple-100 hover:bg-purple-200 text-purple-700 rounded-lg text-sm font-medium transition-colors duration-200">
+                        <button onClick={() => toast('User role/permission managed! (demo)')} className="px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-medium transition-colors duration-200">
                           Manage
                         </button>
                       </div>
@@ -294,6 +296,13 @@ const AdminDashboard: React.FC = () => {
                         <span className="text-gray-600 text-sm">365 days</span>
                       </div>
                     </div>
+                  </div>
+                </div>
+                <div className="mt-6">
+                  <h4 className="text-lg font-semibold text-gray-900">Spoilage Threshold</h4>
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+                    <span className="text-gray-700">Threshold</span>
+                    <input type="number" className="w-20 px-2 py-1 border border-gray-300 rounded text-sm" defaultValue="10" />
                   </div>
                 </div>
               </div>

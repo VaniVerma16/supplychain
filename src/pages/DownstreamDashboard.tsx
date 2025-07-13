@@ -3,10 +3,12 @@ import { ShoppingCart, TrendingDown, AlertTriangle, CheckCircle, Bell, Eye, Pack
 import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/Navbar';
 import { mockProducts } from '../data/mockData';
+import { useToast } from '../components/Navbar';
 
 const DownstreamDashboard: React.FC = () => {
   const { user } = useAuth();
   const [selectedAlert, setSelectedAlert] = useState<string | null>(null);
+  const toast = useToast();
 
   // Mock data for downstream participants
   const receivedBatches = mockProducts.filter(p => p.productType === 'chicken' || p.productType === 'milk');
@@ -129,11 +131,17 @@ const DownstreamDashboard: React.FC = () => {
                     {selectedAlert === alert.id.toString() && (
                       <div className="mt-4 pt-4 border-t border-gray-200">
                         <div className="flex gap-2">
-                          <button className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-medium transition-colors duration-200">
+                          <button onClick={() => toast('View details clicked! (demo)')} className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-medium transition-colors duration-200">
                             View Details
                           </button>
-                          <button className="px-3 py-1 bg-green-600 hover:bg-green-700 text-white rounded-lg text-xs font-medium transition-colors duration-200">
+                          <button onClick={() => toast('Mark resolved clicked! (demo)')} className="px-3 py-1 bg-green-600 hover:bg-green-700 text-white rounded-lg text-xs font-medium transition-colors duration-200">
                             Mark Resolved
+                          </button>
+                          <button onClick={() => toast('Compare vendors clicked! (demo)')} className="px-3 py-1 bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg text-xs font-medium transition-colors duration-200">
+                            Compare Vendors
+                          </button>
+                          <button onClick={() => toast('Get AI suggestion clicked! (demo)')} className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-medium transition-colors duration-200">
+                            Get AI Suggestion
                           </button>
                         </div>
                       </div>
@@ -147,15 +155,15 @@ const DownstreamDashboard: React.FC = () => {
             <div className="bg-white rounded-3xl shadow-lg border border-gray-200 p-6">
               <h2 className="text-xl font-bold text-gray-900 mb-6">Quick Actions</h2>
               <div className="space-y-4">
-                <button className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 border border-blue-200 rounded-2xl transition-all duration-200 group">
+                <button onClick={() => toast('Batch recall triggered! (demo)')} className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 border border-blue-200 rounded-2xl transition-all duration-200 group">
                   <Bell className="w-5 h-5 text-blue-600 group-hover:scale-110 transition-transform duration-200" />
-                  <span className="font-semibold text-blue-700">Trigger Alert</span>
+                  <span className="font-semibold text-blue-700">Trigger Recall</span>
                 </button>
-                <button className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 border border-green-200 rounded-2xl transition-all duration-200 group">
+                <button onClick={() => toast('Batch received! (demo)')} className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 border border-green-200 rounded-2xl transition-all duration-200 group">
                   <CheckCircle className="w-5 h-5 text-green-600 group-hover:scale-110 transition-transform duration-200" />
-                  <span className="font-semibold text-green-700">Receive Batch</span>
+                  <span className="font-semibold text-green-700">Mark as Received</span>
                 </button>
-                <button className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 border border-purple-200 rounded-2xl transition-all duration-200 group">
+                <button onClick={() => toast('Freshness monitoring started! (demo)')} className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 border border-purple-200 rounded-2xl transition-all duration-200 group">
                   <Eye className="w-5 h-5 text-purple-600 group-hover:scale-110 transition-transform duration-200" />
                   <span className="font-semibold text-purple-700">Monitor Freshness</span>
                 </button>
@@ -246,6 +254,12 @@ const DownstreamDashboard: React.FC = () => {
                                 View Alert
                               </button>
                             )}
+                            <button onClick={() => toast('Compare vendors clicked! (demo)')} className="px-3 py-1 bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg text-xs font-medium transition-colors duration-200">
+                              Compare Vendors
+                            </button>
+                            <button onClick={() => toast('AI suggestion received! (demo)')} className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-medium transition-colors duration-200">
+                              Get AI Suggestion
+                            </button>
                           </div>
                         </div>
                       </div>

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { LogIn, User, Lock, Eye, EyeOff, Package } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const demoUsers = [
   {
     email: 'farmer@supply.com',
     name: 'Rajesh Kumar',
-    role: 'Upstream Participant',
+    role: 'upstream',
     company: 'Green Valley Farms, Punjab',
     color: 'from-green-500 to-green-600',
     icon: '🌱'
@@ -14,7 +15,7 @@ const demoUsers = [
   {
     email: 'retailer@supply.com',
     name: 'Priya Sharma',
-    role: 'Downstream Participant',
+    role: 'downstream',
     company: 'Fresh Mart Mumbai',
     color: 'from-blue-500 to-blue-600',
     icon: '🏪'
@@ -22,7 +23,7 @@ const demoUsers = [
   {
     email: 'admin@supply.com',
     name: 'Arjun Patel',
-    role: 'System Administrator',
+    role: 'admin',
     company: 'SupplyChain India Ltd',
     color: 'from-purple-500 to-purple-600',
     icon: '⚙️'
@@ -34,12 +35,15 @@ const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const { login, isLoading } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     const success = await login(credentials);
-    if (!success) {
+    if (success) {
+      navigate('/dashboard');
+    } else {
       setError('Invalid credentials. Please use one of the demo accounts below for your role.');
     }
   };
@@ -147,7 +151,7 @@ const Login: React.FC = () => {
               <div>
                 <h5 className="font-semibold text-gray-700 mb-2">Upstream/Downstream Participants</h5>
                 <div className="space-y-4 mb-6">
-                  {demoUsers.filter(u => u.role !== 'System Administrator').map((user, index) => (
+                  {demoUsers.filter(u => u.role !== 'admin').map((user, index) => (
                     <button
                       key={user.email}
                       onClick={() => quickLogin(user.email)}
@@ -172,7 +176,7 @@ const Login: React.FC = () => {
                 </div>
                 <h5 className="font-semibold text-gray-700 mb-2">Admin</h5>
                 <div>
-                  {demoUsers.filter(u => u.role === 'System Administrator').map(user => (
+                  {demoUsers.filter(u => u.role === 'admin').map(user => (
                     <button
                       key={user.email}
                       onClick={() => quickLogin(user.email)}

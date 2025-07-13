@@ -150,6 +150,11 @@ const ExternalDashboard: React.FC = () => {
           </div>
         )}
 
+        {/* Public Demo View Banner */}
+        <div className="w-full bg-yellow-100 border-b-2 border-yellow-300 text-yellow-900 text-center py-2 font-semibold text-lg mb-4">
+          Public Demo View: All data is read-only. No actions available.
+        </div>
+
         {/* Product Information */}
         {product && !isLoading && (
           <div className="space-y-8">

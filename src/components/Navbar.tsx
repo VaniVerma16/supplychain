@@ -1,6 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, createContext, useContext } from 'react';
 import { LogOut, User, Settings, Shield, ChevronDown, Building } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+
+// Toast Context for global demo feedback
+const ToastContext = createContext<(msg: string) => void>(() => {});
+
+export const useToast = () => useContext(ToastContext);
+
+const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [toast, setToast] = useState<string | null>(null);
+
+  const showToast = (msg: string) => {
+    setToast(msg);
+    setTimeout(() => setToast(null), 2000);
+  };
+
+  return (
+    <ToastContext.Provider value={showToast}>
+      {children}
+      {toast && (
+        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 px-6 py-3 bg-black text-white rounded-xl shadow-lg text-lg animate-fade-in">
+          {toast}
+        </div>
+      )}
+    </ToastContext.Provider>
+  );
+};
 
 const Navbar: React.FC = () => {
   const { user, logout, switchRole } = useAuth();
@@ -141,4 +166,11 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar;
+// Wrap Navbar export with ToastProvider
+const NavbarWithToast: React.FC = (props) => (
+  <ToastProvider>
+    <Navbar {...props} />
+  </ToastProvider>
+);
+
+export default NavbarWithToast;
