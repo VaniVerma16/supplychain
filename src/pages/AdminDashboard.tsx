@@ -64,7 +64,7 @@ const AdminDashboard: React.FC = () => {
             <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -translate-y-16 translate-x-16"></div>
             <div className="relative z-10">
               <h1 className="text-4xl font-bold mb-2">नमस्ते {user?.name}! ⚙️</h1>
-              <p className="text-xl text-purple-100 mb-4">System Administrator Dashboard</p>
+              <p className="text-xl text-purple-100 mb-4">TerraTrace Admin</p>
               <p className="text-purple-100">
                 Monitor system health, manage users, configure alerts, and ensure compliance across the platform.
               </p>

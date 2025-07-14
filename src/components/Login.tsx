@@ -1,30 +1,33 @@
 import React, { useState } from 'react';
-import { LogIn, User, Lock, Eye, EyeOff, Package } from 'lucide-react';
+import { LogIn, User, Lock, Eye, EyeOff, Leaf, Circle } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 
 const demoUsers = [
   {
-    email: 'farmer@supply.com',
+    email: 'farmer@terratrace.com',
+    password: 'farmer',
     name: 'Rajesh Kumar',
     role: 'upstream',
-    company: 'Green Valley Farms, Punjab',
+    company: 'TerraTrace',
     color: 'from-green-500 to-green-600',
     icon: '🌱'
   },
   {
-    email: 'retailer@supply.com',
+    email: 'retailer@terratrace.com',
+    password: 'retailer',
     name: 'Priya Sharma',
     role: 'downstream',
-    company: 'Fresh Mart Mumbai',
+    company: 'TerraTrace',
     color: 'from-blue-500 to-blue-600',
     icon: '🏪'
   },
   {
-    email: 'admin@supply.com',
+    email: 'admin@terratrace.com',
+    password: 'admin',
     name: 'Arjun Patel',
     role: 'admin',
-    company: 'SupplyChain India Ltd',
+    company: 'TerraTrace',
     color: 'from-purple-500 to-purple-600',
     icon: '⚙️'
   }
@@ -57,12 +60,13 @@ const Login: React.FC = () => {
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-3 mb-6">
-            <div className="p-4 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl shadow-lg">
-              <Package className="w-12 h-12 text-white" />
+            <div className="p-4 bg-gradient-to-br from-green-100 to-blue-100 rounded-2xl shadow-lg flex items-center justify-center">
+              <Leaf className="w-10 h-10 text-green-600" />
+              <Circle className="w-7 h-7 text-blue-400 -ml-3" />
             </div>
             <div>
-              <h1 className="text-5xl font-bold text-white">Supply Tracker</h1>
-              <p className="text-xl text-blue-100 font-medium">Cold Chain Traceability Platform</p>
+              <h1 className="text-5xl font-bold text-white">TerraTrace</h1>
+              <p className="text-xl text-blue-100 font-medium">Next-Gen Supply Chain Traceability</p>
             </div>
           </div>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
@@ -73,10 +77,10 @@ const Login: React.FC = () => {
       <div className="py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Industry Participant Login</h2>
-            <p className="text-gray-600 text-lg">For farmers, retailers, transporters, and administrators</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">TerraTrace Login</h2>
+            <p className="text-gray-600">Sign in to access your TerraTrace Dashboard</p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch justify-center">
             <div className="bg-white rounded-3xl shadow-xl border border-gray-200 p-8">
               <div className="text-center mb-8">
                 <div className="p-3 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl inline-block mb-4">
@@ -143,13 +147,13 @@ const Login: React.FC = () => {
               </form>
             </div>
             {/* Demo Users by Role */}
-            <div className="space-y-6">
+            <div className="space-y-6 flex flex-col h-full justify-between">
               <div className="text-center">
                 <h4 className="text-xl font-bold text-gray-900 mb-2">Demo Accounts</h4>
                 <p className="text-gray-600">Click a user for quick login</p>
               </div>
               <div>
-                <h5 className="font-semibold text-gray-700 mb-2">Upstream/Downstream Participants</h5>
+                <h5 className="font-semibold text-gray-700 mb-2">TerraTrace Participants</h5>
                 <div className="space-y-4 mb-6">
                   {demoUsers.filter(u => u.role !== 'admin').map((user, index) => (
                     <button
@@ -200,9 +204,8 @@ const Login: React.FC = () => {
                   ))}
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-6 border border-green-200">
+              <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-6 border border-green-200 mt-auto">
                 <div className="flex items-center gap-3 mb-3">
-                  <Package className="w-5 h-5 text-green-600" />
                   <h4 className="font-bold text-green-900">Need to Track a Product?</h4>
                 </div>
                 <p className="text-sm text-green-700 mb-4">Consumers, regulators, and auditors can track products without logging in.</p>
@@ -210,7 +213,6 @@ const Login: React.FC = () => {
                   to="/external"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-xl font-medium transition-colors duration-200"
                 >
-                  <Package className="w-4 h-4" />
                   Track Product
                 </Link>
               </div>

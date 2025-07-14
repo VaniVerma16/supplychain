@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext } from 'react';
-import { LogOut, User, Settings, Shield, ChevronDown, Building } from 'lucide-react';
+import { LogOut, User, Settings, Shield, ChevronDown, Building, Leaf, Circle } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 // Toast Context for global demo feedback
@@ -50,8 +50,8 @@ const Navbar: React.FC = () => {
   };
 
   const demoRoles = [
-    { role: 'upstream', label: 'Upstream Participant', email: 'farmer@example.com' },
-    { role: 'downstream', label: 'Downstream Participant', email: 'retailer@example.com' },
+    { role: 'upstream', label: 'TerraTrace Upstream', email: 'farmer@example.com' },
+    { role: 'downstream', label: 'TerraTrace Downstream', email: 'retailer@example.com' },
     { role: 'admin', label: 'System Administrator', email: 'admin@example.com' }
   ];
 
@@ -63,12 +63,13 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl">
-              <Shield className="w-6 h-6 text-blue-600" />
+            <div className="p-2 bg-gradient-to-br from-green-200 to-blue-200 rounded-xl flex items-center justify-center">
+              <Leaf className="w-6 h-6 text-green-600" />
+              <Circle className="w-4 h-4 text-blue-400 -ml-2" />
             </div>
             <div>
-              <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Supply Chain
+              <h1 className="text-xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+                TerraTrace
               </h1>
             </div>
           </div>

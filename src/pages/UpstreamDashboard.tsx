@@ -47,7 +47,7 @@ const UpstreamDashboard: React.FC = () => {
             <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -translate-y-16 translate-x-16"></div>
             <div className="relative z-10">
               <h1 className="text-4xl font-bold mb-2">नमस्ते {user?.name}! 🌱</h1>
-              <p className="text-xl text-green-100 mb-4">Upstream Participant Dashboard</p>
+              <p className="text-xl text-green-100 mb-4">TerraTrace Upstream</p>
               <p className="text-green-100">
                 Manage your batches, monitor quality, and ensure seamless handoffs to the next stage.
               </p>
