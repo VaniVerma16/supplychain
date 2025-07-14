@@ -153,7 +153,7 @@ const DownstreamDashboard: React.FC = () => {
             <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -translate-y-16 translate-x-16"></div>
             <div className="relative z-10">
               <h1 className="text-4xl font-bold mb-2">नमस्ते {user?.name}! 🏪</h1>
-              <p className="text-xl text-blue-100 mb-4">Downstream Participant Dashboard</p>
+              <p className="text-xl text-blue-100 mb-4">TerraTrace Downstream</p>
               <p className="text-blue-100">
                 Monitor incoming batches, track spoilage risks, and manage quality alerts for your inventory.
               </p>

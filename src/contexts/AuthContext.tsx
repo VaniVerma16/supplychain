@@ -4,26 +4,26 @@ import { AuthState, LoginCredentials, User } from '../types/auth';
 const mockUsers: User[] = [
   {
     id: '1',
-    email: 'farmer@supply.com',
+    email: 'farmer@terratrace.com',
     name: 'Rajesh Kumar',
     role: 'upstream',
-    company: 'Green Valley Farms, Punjab',
+    company: 'TerraTrace',
     permissions: ['view_upstream', 'track_products']
   },
   {
     id: '2',
-    email: 'retailer@supply.com',
+    email: 'retailer@terratrace.com',
     name: 'Priya Sharma',
     role: 'downstream',
-    company: 'Fresh Mart Mumbai',
+    company: 'TerraTrace',
     permissions: ['view_downstream', 'track_products']
   },
   {
     id: '3',
-    email: 'admin@supply.com',
+    email: 'admin@terratrace.com',
     name: 'Arjun Patel',
     role: 'admin',
-    company: 'SupplyChain India Ltd',
+    company: 'TerraTrace',
     permissions: ['manage_users', 'view_all_data', 'configure_alerts', 'export_reports']
   }
 ];

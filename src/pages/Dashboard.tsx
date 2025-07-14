@@ -57,7 +57,7 @@ const Dashboard: React.FC = () => {
                   <Sparkles className="w-6 h-6 lg:w-8 lg:h-8 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h1 className="text-3xl lg:text-5xl font-bold mb-2">Supply Dashboard</h1>
+                  <h1 className="text-3xl lg:text-5xl font-bold mb-2">TerraTrace Dashboard</h1>
                   <p className="text-lg lg:text-xl text-blue-100 font-medium">
                     Cold Chain Traceability & Quality Monitoring
                   </p>
@@ -163,7 +163,7 @@ const Dashboard: React.FC = () => {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Welcome to Supply</h3>
+              <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Welcome to TerraTrace</h3>
               <p className="text-gray-600 mb-8 lg:mb-12 text-base lg:text-lg leading-relaxed">
                 Enter a batch ID above to start tracking its cold chain journey and quality metrics.
                 Our advanced monitoring system provides real-time insights into temperature, humidity, and quality conditions.

@@ -39,7 +39,7 @@ const JourneyVisualization: React.FC = () => {
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             <ArrowLeft className="w-5 h-5" />
-            Back to Dashboard
+            Back to TerraTrace
           </Link>
         </div>
       </div>
@@ -62,7 +62,7 @@ const JourneyVisualization: React.FC = () => {
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mb-6 transition-colors duration-200 group"
           >
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-200" />
-            Back to Dashboard
+            Back to TerraTrace
           </Link>
           
           <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-lg border border-gray-200 p-8 relative overflow-hidden">
