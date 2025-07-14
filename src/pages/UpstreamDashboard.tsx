@@ -4,6 +4,7 @@ import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/Navbar';
 import { mockProducts } from '../data/mockData';
 import { useToast } from '../components/Navbar';
+import LiveSensorPanel from '../components/LiveSensorPanel';
 
 const UpstreamDashboard: React.FC = () => {
   const { user } = useAuth();
@@ -192,6 +193,12 @@ const UpstreamDashboard: React.FC = () => {
                               Confirm Handoff
                             </button>
                           </div>
+                          {/* Live Sensor Panel: Only show for upstream user */}
+                          {user?.role === 'upstream' && (
+                            <div className="mt-8">
+                              <LiveSensorPanel />
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>
